@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1B1A1A"
+    tools:context=".NewItem">
+
+    <TextView
+        android:id="@+id/newItemTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="99dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="100dp"
+        android:text="Add New Item"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/dateLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="41dp"
+        android:text="Purchase Date:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemNameLabel" />
+
+    <TextView
+        android:id="@+id/purchaseLocationLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="53dp"
+        android:text="Purchase Location:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dateLabel" />
+
+    <TextView
+        android:id="@+id/storageLocationLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="56dp"
+        android:text="Storage Location:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/purchasePriceLabel" />
+
+    <TextView
+        android:id="@+id/purchasePriceLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="49dp"
+        android:text="Purchase Price:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/purchaseLocationLabel" />
+
+    <TextView
+        android:id="@+id/itemNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="76dp"
+        android:labelFor="@id/itemNameInput"
+        android:text="Item Name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newItemTitle" />
+
+    <EditText
+        android:id="@+id/purchaseDateInput"
+        android:layout_width="195dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="15dp"
+        app:backgroundTint ="#FFFFFF"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dateLabel"
+        app:layout_constraintTop_toBottomOf="@+id/itemNameInput" />
+
+    <EditText
+        android:id="@+id/itemNameInput"
+        android:layout_width="195dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="69dp"
+        android:layout_marginEnd="15dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
+        app:backgroundTint ="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/itemNameLabel"
+        app:layout_constraintTop_toBottomOf="@+id/newItemTitle" />
+
+    <EditText
+        android:id="@+id/purchaseLocationInput"
+        android:layout_width="195dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="15dp"
+        android:ems="10"
+        app:backgroundTint ="#FFFFFF"
+        android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/purchaseLocationLabel"
+        app:layout_constraintTop_toBottomOf="@+id/purchaseDateInput"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/storageLocationInput"
+        android:layout_width="195dp"
+        android:layout_height="48dp"
+        app:backgroundTint ="#FFFFFF"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="15dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/storageLocationLabel"
+        app:layout_constraintTop_toBottomOf="@+id/purchasePriceInput" />
+
+    <EditText
+        android:id="@+id/purchasePriceInput"
+        android:layout_width="195dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="15dp"
+        android:ems="10"
+        app:backgroundTint ="#FFFFFF"
+        android:inputType="numberDecimal"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toEndOf="@+id/purchasePriceLabel"
+        app:layout_constraintTop_toBottomOf="@+id/purchaseLocationInput"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/addItemButton"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="20dp"
+        android:text="Add Item"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="#0091EA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/cancelAdd"
+        android:layout_width="105dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginBottom="20dp"
+        android:text="Cancel"
+        app:backgroundTint="#D50000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/addItemButton"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
