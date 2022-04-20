@@ -45,6 +45,7 @@ public class UpdateItem extends AppCompatActivity {
     int day;
     String date;
     Intent goToDisplayItems;
+    boolean editMode = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +77,8 @@ public class UpdateItem extends AppCompatActivity {
         soldSwitch.setClickable(false);
         deleteButton.setEnabled(false);
         updateButton.setEnabled(false);
+        purchaseDate.setClickable(false);
+        soldDate.setClickable(false);
         getCurrentItem();
         editButton.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ResourceAsColor")
@@ -86,18 +89,20 @@ public class UpdateItem extends AppCompatActivity {
                 deleteButton.setEnabled(true);
                 deleteButton.setBackgroundColor(Color.RED);
                 updateButton.setEnabled(true);
+
                 updateButton.setBackgroundColor(Color.parseColor("#00A4FF"));
                 itemName.setFocusableInTouchMode(true);
                 purchaseLocation.setFocusableInTouchMode(true);
-                purchaseDate.setFocusableInTouchMode(true);
+                //purchaseDate.setFocusableInTouchMode(true);
                 purchasePrice.setFocusableInTouchMode(true);
                 storageLocation.setFocusableInTouchMode(true);
                 soldPrice.setFocusableInTouchMode(true);
-                soldDate.setFocusableInTouchMode(true);
+               // soldDate.setFocusableInTouchMode(true);
                 platformSold.setFocusableInTouchMode(true);
                 soldSwitch.setFocusableInTouchMode(true);
                 soldLayout.setFocusableInTouchMode(true);
                 sellingFees.setFocusableInTouchMode(true);
+                editMode = true;
 
             }
         });
@@ -214,23 +219,28 @@ public class UpdateItem extends AppCompatActivity {
         purchaseDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(UpdateItem.this, (datePicker, year, month, day) -> {
-                    month++;
-                    date = day + "/" + month + "/" + year;
-                    purchaseDate.setText(date);
-                }, year, month,day);
-                datePickerDialog.show();
+                if(editMode){
+                    DatePickerDialog datePickerDialog = new DatePickerDialog(UpdateItem.this, (datePicker, year, month, day) -> {
+                        month++;
+                        date = day + "/" + month + "/" + year;
+                        purchaseDate.setText(date);
+                    }, year, month,day);
+                    datePickerDialog.show();
+                }
+
             }
         });
         soldDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(UpdateItem.this, (datePicker, year, month, day) -> {
-                    month++;
-                    date = day + "/" + month + "/" + year;
-                    soldDate.setText(date);
-                }, year, month,day);
-                datePickerDialog.show();
+                if(editMode){
+                    DatePickerDialog datePickerDialog = new DatePickerDialog(UpdateItem.this, (datePicker, year, month, day) -> {
+                        month++;
+                        date = day + "/" + month + "/" + year;
+                        soldDate.setText(date);
+                    }, year, month,day);
+                    datePickerDialog.show();
+                }
             }
         });
 
