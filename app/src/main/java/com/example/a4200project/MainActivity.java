@@ -69,13 +69,10 @@ public class MainActivity extends AppCompatActivity {
 
         DBHelper db = new DBHelper(MainActivity.this);
         itemArrayList = db.getAllItems();
-
         for(Item currentItem : itemArrayList){
             if(currentItem.sold){
                 totalSales += currentItem.getSoldPrice();
-
                 numOfSales++;
-
             }
             totalExpenses = totalExpenses + currentItem.getPurchasePrice() + currentItem.getSaleFees();
             totalItems++;

@@ -1,9 +1,7 @@
 package com.example.a4200project;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
@@ -27,7 +25,6 @@ public class DBHelper extends SQLiteOpenHelper{
     public static final String COLUMN_SALE_DATE = "SALE_DATE";
     public static final String COLUMN_PLATFORM_SOLD_ON = "PLATFORM_SOLD_ON";
     public static final String COLUMN_SALE_FEES = "SALE_FEES";
-
     public static final Integer POSITION_ID = 0;
     public static final Integer POSITION_ITEM_NAME = 1;
     public static final Integer POSITION_PURCHASE_LOCATION = 2;
@@ -39,11 +36,6 @@ public class DBHelper extends SQLiteOpenHelper{
     public static final Integer POSITION_PLATFORM_SOLD_ON = 8;
     public static final Integer POSITION_SOLD_PRICE = 9;
     public static final Integer POSITION_SALE_FEES = 10;
-
-
-
-
-
 
     public DBHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -66,36 +58,6 @@ public class DBHelper extends SQLiteOpenHelper{
                     COLUMN_SALE_FEES + " FLOAT)";
         sqLiteDatabase.execSQL(createTableStatement);
     }
-    public ContentValues setContentValues(ContentValues cv, Item item){
-
-        cv.put(COLUMN_ITEM_NAME, item.getItemName());
-        cv.put(COLUMN_PURCHASE_LOCATION, item.getPurchasedFrom());
-        cv.put(COLUMN_PURCHASE_PRICE, item.getPurchasePrice());
-        cv.put(COLUMN_PURCHASE_DATE, item.getPurchaseDate());
-        cv.put(COLUMN_STORAGE_LOCATION, item.getStorageLocation());
-        cv.put(COLUMN_SOLD, item.getSold());
-        cv.put(COLUMN_SALE_DATE, item.getSaleDate());
-        cv.put(COLUMN_PLATFORM_SOLD_ON, item.getPlatformSoldOn());
-        cv.put(COLUMN_SOLD_PRICE, item.getSoldPrice());
-        cv.put(COLUMN_SALE_FEES, item.getSaleFees());
-
-        return cv;
-    }
-    public ContentValues setContentValues2(ContentValues cv, Item item){
-        cv.put(COLUMN_ID, item.getId());
-        cv.put(COLUMN_ITEM_NAME, item.getItemName());
-        cv.put(COLUMN_PURCHASE_LOCATION, item.getPurchasedFrom());
-        cv.put(COLUMN_PURCHASE_PRICE, item.getPurchasePrice());
-        cv.put(COLUMN_PURCHASE_DATE, item.getPurchaseDate());
-        cv.put(COLUMN_STORAGE_LOCATION, item.getStorageLocation());
-        cv.put(COLUMN_SOLD, item.getSold());
-        cv.put(COLUMN_SALE_DATE, item.getSaleDate());
-        cv.put(COLUMN_PLATFORM_SOLD_ON, item.getPlatformSoldOn());
-        cv.put(COLUMN_SOLD_PRICE, item.getSoldPrice());
-        cv.put(COLUMN_SALE_FEES, item.getSaleFees());
-
-        return cv;
-    }
     public void deleteItem(Context context, Item item){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         String num = String.valueOf(item.getId());
@@ -108,10 +70,19 @@ public class DBHelper extends SQLiteOpenHelper{
             Toast.makeText(context, "Update Failed", Toast.LENGTH_SHORT).show();
         }
     }
-    public boolean addNewItem(Item newItem){
+    public boolean addNewItem(Item item){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        ContentValues cv = setContentValues(new ContentValues(), newItem);
-
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_ITEM_NAME, item.getItemName());
+        cv.put(COLUMN_PURCHASE_LOCATION, item.getPurchasedFrom());
+        cv.put(COLUMN_PURCHASE_PRICE, item.getPurchasePrice());
+        cv.put(COLUMN_PURCHASE_DATE, item.getPurchaseDate());
+        cv.put(COLUMN_STORAGE_LOCATION, item.getStorageLocation());
+        cv.put(COLUMN_SOLD, item.getSold());
+        cv.put(COLUMN_SALE_DATE, item.getSaleDate());
+        cv.put(COLUMN_PLATFORM_SOLD_ON, item.getPlatformSoldOn());
+        cv.put(COLUMN_SOLD_PRICE, item.getSoldPrice());
+        cv.put(COLUMN_SALE_FEES, item.getSaleFees());
 
         long insert = sqLiteDatabase.insert(ITEMS_TABLE, null, cv);
         return insert != -1;
@@ -150,7 +121,18 @@ public class DBHelper extends SQLiteOpenHelper{
     }
     public void updateItem(Context context, Item item){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        ContentValues cv = setContentValues2(new ContentValues(), item);
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_ID, item.getId());
+        cv.put(COLUMN_ITEM_NAME, item.getItemName());
+        cv.put(COLUMN_PURCHASE_LOCATION, item.getPurchasedFrom());
+        cv.put(COLUMN_PURCHASE_PRICE, item.getPurchasePrice());
+        cv.put(COLUMN_PURCHASE_DATE, item.getPurchaseDate());
+        cv.put(COLUMN_STORAGE_LOCATION, item.getStorageLocation());
+        cv.put(COLUMN_SOLD, item.getSold());
+        cv.put(COLUMN_SALE_DATE, item.getSaleDate());
+        cv.put(COLUMN_PLATFORM_SOLD_ON, item.getPlatformSoldOn());
+        cv.put(COLUMN_SOLD_PRICE, item.getSoldPrice());
+        cv.put(COLUMN_SALE_FEES, item.getSaleFees());
         String num = String.valueOf(item.getId());
         int val = sqLiteDatabase.update(ITEMS_TABLE, cv, COLUMN_ID + "= ?",new String[]{String.valueOf(item.getId())});
         if(val > 0){

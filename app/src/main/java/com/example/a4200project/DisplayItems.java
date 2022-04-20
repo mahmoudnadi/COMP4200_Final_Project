@@ -34,9 +34,7 @@ public class DisplayItems extends AppCompatActivity {
         goHome = findViewById(R.id.homeButton);
         DBHelper db = new DBHelper(DisplayItems.this);
         itemArrayList = db.getAllItems();
-
         adapter = new RecyclerAdapter(DisplayItems.this, itemArrayList);
-
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(DisplayItems.this));
 
